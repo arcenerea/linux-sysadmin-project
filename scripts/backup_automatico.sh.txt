@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# backup_automatico.sh
+# Script para hacer una copia de seguridad de una carpeta
+
+# Carpeta origen
+ORIGEN="$HOME/Documentos"
+
+# Carpeta destino
+DESTINO="$HOME/backup"
+
+# Crear destino si no existe
+mkdir -p "$DESTINO"
+
+# Ejecutar backup
+FECHA=$(date +%Y-%m-%d_%H-%M-%S)
+cp -r "$ORIGEN" "$DESTINO/backup_$FECHA"
+
+echo "Backup completado: $DESTINO/backup_$FECHA"
