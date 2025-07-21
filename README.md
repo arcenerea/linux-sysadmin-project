@@ -14,7 +14,7 @@ Este es un proyecto sencillo para mostrar habilidades básicas como administrado
 
 
 
-\## Cómo usarlO
+\## Cómo usarlo
 
 
 
