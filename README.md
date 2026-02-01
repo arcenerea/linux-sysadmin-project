@@ -1,60 +1,51 @@
-# 🐧 arcenerea
+# 🐧 Linux System Administration Lab - Automatic Backup Script
 
-Proyecto de **Administración de Sistemas Linux** diseñado para demostrar habilidades básicas como **administradora de sistemas**.  
-Incluye un **script de backup automático** que copia una carpeta a otra con fecha y hora.
-
----
-
-## 🎯 Objetivo
-- Practicar **automatización de tareas en Linux**.  
-- Mostrar habilidades en **Bash scripting y gestión de archivos**.  
-- Crear un proyecto **práctico y útil** para un entorno de usuario Linux.
+**Author:** Nerea Arce  
+**GitHub:** [arcenerea](https://github.com/arcenerea)  
+**Date:** 2026
 
 ---
 
-## 📂 Contenido
-- `scripts/backup_automatico.sh` – Script que copia la carpeta **Documentos** a `/home/backup` con **fecha y hora** incluida.  
+## 🎯 Objetivo / Objective
+
+Este proyecto demuestra habilidades básicas de administración de sistemas Linux:
+
+- Automatización de tareas mediante Bash  
+- Gestión de archivos y directorios  
+- Creación de scripts prácticos para uso diario en Linux  
+
+This project demonstrates basic Linux system administration skills:
+
+- Task automation using Bash  
+- File and directory management  
+- Creating practical scripts for daily Linux usage  
 
 ---
 
-## ⚙️ Cómo usarlo
-1. Abre una terminal en Linux.  
-2. Da permisos al script:  
-chmod +x scripts/backup_automatico.sh
-3. Ejecútalo:
+## 📂 Contenido / Project Contents
+
+- `scripts/backup_automatico.sh` – Script de backup automático que copia la carpeta `Documentos` a `/home/backup` con fecha y hora incluida.  
+- `docs/` (opcional) – Diagramas o capturas del flujo de backup.  
+- `examples/` (opcional) – Ejemplos de salida del script o logs.  
+
+`scripts/backup_automatico.sh` – Automatic backup script that copies your `Documents` folder to `/home/backup` with date and time.  
+`docs/` (optional) – Diagrams or screenshots of the backup flow.  
+`examples/` (optional) – Example script output or logs.
+
+---
+
+## ⚙️ Cómo usarlo / How to Use
+
+1. Abre una terminal en Linux / Open a terminal in Linux  
+2. Da permisos de ejecución al script / Give execute permissions to the script:
+   ```bash
+   chmod +x scripts/backup_automatico.sh
+
+
+3. Ejecuta el script / Run the script:
+
 ./scripts/backup_automatico.sh
 
-✅ El backup se guardará en /home/backup.
 
-
-English
-
-
-# 🐧 arcenerea
-
-Linux **System Administration project** designed to demonstrate basic skills as a **System Administrator**.  
-Includes an **automatic backup script** that copies a folder to another folder with date and time.
-
----
-
-## 🎯 Goal
-- Practice **task automation in Linux**.  
-- Demonstrate skills in **Bash scripting and file management**.  
-- Create a **practical and useful project** for a Linux user environment.
-
----
-
-## 📂 Content
-- `scripts/backup_automatico.sh` – Script that copies the **Documents** folder to `/home/backup` including **date and time**.
-
----
-
-## ⚙️ How to use it
-1. Open a terminal in Linux.  
-2. Give permissions to the script:  
-chmod +x scripts/backup_automatico.sh
-3. Run it:
-./scripts/backup_automatico.sh
-
-✅ The backup will be saved in /home/backup.**
+El backup se guardará en /home/backup/YYYY-MM-DD_HH-MM-SS / Your backup will be saved in /home/backup/YYYY-MM-DD_HH-MM-SS
 
