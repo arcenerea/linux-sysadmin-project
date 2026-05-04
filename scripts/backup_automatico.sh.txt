@@ -1,19 +1,46 @@
 #!/bin/bash
+# =============================================================================
+# backup.sh — Automated backup with compression, rotation and logging
+# Author: Nerea Arce | github.com/arcenerea
+# =============================================================================
 
-# backup_automatico.sh
-# Script para hacer una copia de seguridad de una carpeta
+# --- Configuration ---
+SOURCE="${HOME}/Documents"
+DEST="${HOME}/backups"
+RETENTION=7
+LOG_FILE="${DEST}/backup.log"
 
-# Carpeta origen
-ORIGEN="$HOME/Documentos"
+# --- Setup ---
+mkdir -p "$DEST"
 
-# Carpeta destino
-DESTINO="$HOME/backup"
+TIMESTAMP=$(date +%Y-%m-%d_%H-%M-%S)
+ARCHIVE="${DEST}/backup_${TIMESTAMP}.tar.gz"
 
-# Crear destino si no existe
-mkdir -p "$DESTINO"
+log() {
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"
+}
 
-# Ejecutar backup
-FECHA=$(date +%Y-%m-%d_%H-%M-%S)
-cp -r "$ORIGEN" "$DESTINO/backup_$FECHA"
+# --- Run backup ---
+log "Starting backup: ${SOURCE} → ${ARCHIVE}"
 
-echo "Backup completado: $DESTINO/backup_$FECHA"
+if tar -czf "$ARCHIVE" -C "$(dirname "$SOURCE")" "$(basename "$SOURCE")" 2>>"$LOG_FILE"; then
+  SIZE=$(du -sh "$ARCHIVE" | cut -f1)
+  log "Backup completed successfully. Size: ${SIZE}"
+else
+  log "ERROR: Backup failed."
+  exit 1
+fi
+
+# --- Rotation: keep last N backups ---
+BACKUP_COUNT=$(ls -1 "${DEST}"/backup_*.tar.gz 2>/dev/null | wc -l)
+
+if [ "$BACKUP_COUNT" -gt "$RETENTION" ]; then
+  DELETE_COUNT=$((BACKUP_COUNT - RETENTION))
+  log "Rotating old backups — removing ${DELETE_COUNT} file(s)..."
+  ls -1t "${DEST}"/backup_*.tar.gz | tail -n "$DELETE_COUNT" | while read -r OLD; do
+    rm -f "$OLD"
+    log "Deleted: ${OLD}"
+  done
+fi
+
+log "Done. Total backups kept: $(ls -1 "${DEST}"/backup_*.tar.gz 2>/dev/null | wc -l)/${RETENTION}"
