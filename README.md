@@ -1,9 +1,5 @@
 # 🐧 Linux System Administration Lab - Automatic Backup Script
 
-**Author:** Nerea Arce  
-**GitHub:** [arcenerea](https://github.com/arcenerea)  
-**Date:** 2026
-
 ---
 
 ## Usage
